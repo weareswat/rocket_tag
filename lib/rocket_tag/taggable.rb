@@ -181,7 +181,9 @@ module RocketTag
  
         # Grab table name
         t = self.table_name
-        
+
+        context_condition = with_tag_context(options.delete(:on))
+
         q = joins{taggings.tag}
         
         alias_tag_names = lambda do |list| 
@@ -220,7 +222,7 @@ module RocketTag
           clean_list.flatten!
           q = q.
             where{tags.name.in(clean_list)}.
-            where(with_tag_context(options.delete(:on)))
+            where(context_condition)
         end
 
         q = q.group_by_all_columns.
@@ -241,7 +243,7 @@ module RocketTag
         # Require all the tags if required
         all, exact = options.delete(:all), options.delete(:exact)
         q = q.where{tags_count==tags_list.length} if all || exact
-        q = q.joins{taggings.tag}.group("#{self.table_name}.id").having('COUNT(tags.id) = ?', tags_list.length) if exact
+        q = q.joins{taggings.tag}.where(context_condition).group("#{self.table_name}.id").having('COUNT(tags.id) = ?', tags_list.length) if exact
 
         # Return the relation        
         q
