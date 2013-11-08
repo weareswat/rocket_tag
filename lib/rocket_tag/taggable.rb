@@ -286,12 +286,14 @@ module RocketTag
         tags(options)
       end
 
-      def setup_for_rocket_tag
+      def setup_for_rocket_tag preload
         unless @setup_for_rocket_tag
           @setup_for_rocket_tag = true
           class_eval do
-            default_scope do
-              preload{taggings}.preload{tags}
+            if preload
+              default_scope do
+                preload{taggings}.preload{tags}
+              end
             end
 
             before_save do
@@ -340,9 +342,12 @@ module RocketTag
           alias_method_chain :reload, :tags
         end
 
+        options = contexts.extract_options!
+        preload = options.include?(:preload) ? !!options[:preload] : RocketTag.configuration.preload_tags
+
         rocket_tag.contexts += contexts
 
-        setup_for_rocket_tag
+        setup_for_rocket_tag preload
 
         contexts.each do |context|
           class_eval do

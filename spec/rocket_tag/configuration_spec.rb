@@ -11,6 +11,8 @@ describe RocketTag::Configuration do
         value = case key
         when :force_lowercase
           [true, false].sample
+        when :preload_tags
+          [true, false].sample
         else
           raise StandardError, "Don't know how to create text value for #{key}"
         end

@@ -1,10 +1,12 @@
 module RocketTag
   class Configuration
     VALID_CONFIG_KEYS = [
-      :force_lowercase
+      :force_lowercase,
+      :preload_tags
     ]
 
     DEFAULT_FORCE_LOWERCASE = false
+    DEFAULT_PRELOAD_TAGS = true
 
     attr_accessor *VALID_CONFIG_KEYS
 

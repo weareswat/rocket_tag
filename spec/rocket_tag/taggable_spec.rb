@@ -127,6 +127,43 @@ describe TaggableModel do
     end
   end
 
+  describe "don't preload tags" do
+    before :each do
+      @sample_pm = PreloadedModel.create :skills => %w[x y z]
+      @sample_lm = NotPreloadedModel.create :skills => %w[x y z]
+
+      @preloaded_model = PreloadedModel.find(@sample_pm.id)
+      @lazy_model = NotPreloadedModel.find(@sample_lm.id)
+    end
+
+    it "should not preload tags" do
+      @preloaded_model.taggings.loaded?.should == true
+      @lazy_model.taggings.loaded?.should == false
+    end
+
+    it "should return correct tags when used" do
+      @preloaded_model.skills.should == ["x", "y", "z"]
+      @lazy_model.skills.should == ["x", "y", "z"]
+    end
+
+    it "should reload tags when changed in database" do
+      @preloaded_model.skills.should == ["x", "y", "z"]
+      @lazy_model.skills.should == ["x", "y", "z"]
+
+      [@sample_pm, @sample_lm].each do |sample|
+        sample.skills.should == ["x", "y", "z"]
+        sample.skills = ["a", "b"]
+        sample.save
+      end
+
+      @preloaded_model.reload
+      @lazy_model.reload
+
+      @preloaded_model.skills.should == ["a", "b"]
+      @lazy_model.skills.should == ["a", "b"]
+    end
+  end
+
   describe "querying tags" do
     before :each do
       @user0 = User.create :name => "brad"

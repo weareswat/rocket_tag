@@ -11,6 +11,16 @@ class TaggableModel < ActiveRecord::Base
   belongs_to :user
 end
 
+class PreloadedModel < ActiveRecord::Base
+  self.table_name = TaggableModel.table_name
+  attr_taggable :languages, :skills, :preload => true
+end
+
+class NotPreloadedModel < ActiveRecord::Base
+  self.table_name = TaggableModel.table_name
+  attr_taggable :languages, :skills, :preload => false
+end
+
 class User < ActiveRecord::Base
   has_many :taggable_models
 end
