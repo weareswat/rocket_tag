@@ -76,8 +76,9 @@ module RocketTag
           write_context context, []
         end
         @tags_cached = false
-        cache_tags
-        reload_without_tags(options)
+        reload_without_tags(options).tap do
+          cache_tags
+        end
       end
 
       def cache_tags

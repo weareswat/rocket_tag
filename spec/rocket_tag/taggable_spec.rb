@@ -91,6 +91,19 @@ describe TaggableModel do
       @model.reload
       @model.needs.should == ["a"]
     end
+
+    it "tags correctly when changed" do
+      @model.languages = ["a", "b", "c"]
+      @model.save
+
+      other = TaggableModel.find(@model.id)
+      other.languages.should == ["a", "b", "c"]
+      other.languages = ["x", "y"]
+      other.save
+
+      @model.reload
+      @model.languages.sort.should == ["x", "y"]
+    end
   end
 
   describe "combining with active relation" do
