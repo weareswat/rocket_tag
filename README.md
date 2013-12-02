@@ -1,7 +1,7 @@
-Rocket Tag
+Rocket Tag for Rails 4
 ==========
 
-Clean, modern and maintainable, context aware tagging library for rails 3.1 +
+Clean, modern and maintainable, context aware tagging library for rails 4.0 +.
 
 Installation
 ------------
