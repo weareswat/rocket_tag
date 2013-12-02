@@ -62,5 +62,5 @@ DEPENDENCIES
   rake
   rspec (~> 2.10.0)
   sqlite3
-  squeel (~> 1.0)
+  squeel (>= 1.0)
   yard (~> 0.6.0)
