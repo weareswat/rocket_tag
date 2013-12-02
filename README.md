@@ -8,7 +8,7 @@ Installation
 
 In your gemfile
 
-	gem "rocket_tag"
+	gem "rocket_tag"  , github: 'blotto/rocket_tag', :branch => "master"
 
 Then at the command line
 	
