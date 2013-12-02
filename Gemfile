@@ -11,7 +11,7 @@ group :development do
   gem "pg"
   gem "rspec", "~> 2.10.0"
   gem "yard", "~> 0.6.0"
-  gem "bundler", "~> 1.2.0"
+  gem "bundler", ">= 1.2.0"   #make optimistic
   gem "jeweler", "~> 1.6.4"
   #gem "rcov", ">= 0"
   gem 'sqlite3'
