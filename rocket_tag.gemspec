@@ -54,7 +54,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<pg>, [">= 0"])
       s.add_development_dependency(%q<rspec>, ["~> 2.10.0"])
       s.add_development_dependency(%q<yard>, ["~> 0.6.0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.1.0"])
+      s.add_development_dependency(%q<bundler>, [">= 1.1.0"])   #make optimistic
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_development_dependency(%q<sqlite3>, [">= 0"])
       s.add_development_dependency(%q<rake>, [">= 0"])
@@ -64,7 +64,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<pg>, [">= 0"])
       s.add_dependency(%q<rspec>, ["~> 2.10.0"])
       s.add_dependency(%q<yard>, ["~> 0.6.0"])
-      s.add_dependency(%q<bundler>, ["~> 1.1.0"])
+      s.add_dependency(%q<bundler>, [">= 1.1.0"])    #make optimistic
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_dependency(%q<sqlite3>, [">= 0"])
       s.add_dependency(%q<rake>, [">= 0"])
