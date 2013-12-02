@@ -1,16 +1,6 @@
 module RocketTag
   class Tagging < ::ActiveRecord::Base 
 
-    attr_accessible :tag,
-                    :tag_id,
-                    :context,
-                    :taggable,
-                    :taggable_type,
-                    :taggable_id,
-                    :tagger,
-                    :tagger_type,
-                    :tagger_id
-
     belongs_to :tag, :class_name => 'RocketTag::Tag'
     belongs_to :taggable, :polymorphic => true
     belongs_to :tagger,   :polymorphic => true
