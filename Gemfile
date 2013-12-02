@@ -3,7 +3,7 @@ source "http://rubygems.org"
 # Example:
 #   gem "activesupport", ">= 2.3.5"
 gem "activerecord", ">= 3.2.0"
-gem "squeel", '>= 1.0', :require => false   #make optimistic
+gem "squeel", '>= 1.1.1', :require => false   #make optimistic
 gem "polyamorous", '>= 0.6' #make optimistic
 
 # Add dependencies to develop your gem here.
