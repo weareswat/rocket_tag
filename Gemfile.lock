@@ -50,6 +50,7 @@ DEPENDENCIES
   bundler (>= 1.2.0)
   jeweler (~> 1.6.4)
   pg
+  polyamorous (>= 0.5)
   rake
   rspec (~> 2.10.0)
   sqlite3
