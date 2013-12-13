@@ -4,7 +4,7 @@ module RocketTag
 
 
     validates_presence_of :name
-    validates_uniqueness_of :name
+    validates_uniqueness_to_tenant :name
 
     has_and_belongs_to_many :alias, -> { uniq }, :class_name => "RocketTag::Tag",
                 :join_table => "alias_tags",
