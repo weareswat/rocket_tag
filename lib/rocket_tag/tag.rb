@@ -4,7 +4,8 @@ module RocketTag
 
 
     validates_presence_of :name
-    validates_uniqueness_to_tenant :name
+    # add uniqueness validation as needed later
+    #validates_uniqueness :name
 
     has_and_belongs_to_many :alias, -> { uniq }, :class_name => "RocketTag::Tag",
                 :join_table => "alias_tags",
@@ -17,11 +18,11 @@ module RocketTag
       [self.alias, self].flatten.each do |t|
         tag.alias << t if !tag.alias.include?(t) && t != tag
       end
-    end   
+    end
 
     def remove_reverse_alias(tag)
       tag.alias.delete(self) if tag.alias.include?(self)
-    end  
+    end
 
     def alias?(that)
       return self.alias.include?(that)
